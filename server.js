@@ -14,10 +14,7 @@ const io = new Server(server, {
 })
 
 app.use(express.static(path.join(__dirname+"/public")));
-app.get("/",( req, res)=> {
-  res.setHeader("Access-Control-Allow-Credentials","true");
-  res.send("API is running..");
-})
+
 const User = require('./models/User');
 const Balance = require('./models/Balance');
 const userRoutes = require('./routes/userRoutes');
@@ -53,10 +50,10 @@ app.post('/create-payment', async(req, res)=> {
 })
  
 //get Balance
-// app.get('/balances', async (req, res)=>{
-//      Balance.find().then(balance => res.json(balance)).catch(err => res.json(err))
+app.get('/balances', async (req, res)=>{
+     Balance.find().then(balance => res.json(balance)).catch(err => res.json(err))
 
-// });
+});
 
 
 
